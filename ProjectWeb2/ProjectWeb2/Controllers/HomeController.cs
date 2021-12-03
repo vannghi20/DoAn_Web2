@@ -62,6 +62,11 @@ namespace ProjectWeb2.Controllers
             }
             return null;
         }
+        //Dich vu
+        public IActionResult DichVu()
+        {
+            return View();
+        }
         //Contact
         [HttpGet]
         public IActionResult Contact()
