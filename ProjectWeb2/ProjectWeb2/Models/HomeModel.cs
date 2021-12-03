@@ -7,5 +7,6 @@ namespace ProjectWeb2.Models
 {
     public class HomeModel
     {
+        public List<FoodItem> foodItem;
     }
 }
