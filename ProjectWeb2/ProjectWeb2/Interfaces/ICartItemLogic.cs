@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
+using ProjectWeb2.Models;
 
 namespace ProjectWeb2.Interfaces
 {
-    public class ICartItemLogic
+    public interface ICartItemLogic
     {
+        Task<bool> CreateNewCart(CartItem cart);
+        Task<List<CartItem>> GetAllCart();
+        Task<bool> RemoveCart(int id);
     }
 }
