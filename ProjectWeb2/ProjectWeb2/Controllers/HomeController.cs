@@ -10,9 +10,11 @@ namespace ProjectWeb2.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IProductLogic _foodItemLogic;
         private readonly IContactLogic _contactLogic;
-        public HomeController(ILogger<HomeController> logger, IContactLogic contactLogic)
+        public HomeController(ILogger<HomeController> logger, IContactLogic contactLogic, IProductLogic foodItemLogic)
         {
+            _foodItemLogic = foodItemLogic;
             _contactLogic = contactLogic;
             _logger = logger;
         }
@@ -21,6 +23,46 @@ namespace ProjectWeb2.Controllers
         {
             return View();
         }
+        public async Task<IActionResult> Product()
+        {
+            HomeModels homeModels = new HomeModels();
+
+            var respone = await _foodItemLogic.GetAllFood();
+
+
+            if (respone != null)
+            {
+                return View("Product", respone);
+            }
+            return null;
+        }
+        public async Task<IActionResult> ProductGQ()
+        {
+            HomeModels homeModels = new HomeModels();
+
+            var respone = await _foodItemLogic.GetFoodGQ();
+
+
+            if (respone != null)
+            {
+                return View("Product", respone);
+            }
+            return null;
+        }
+        public async Task<IActionResult> ProductNE()
+        {
+            HomeModels homeModels = new HomeModels();
+
+            var respone = await _foodItemLogic.GetFoodNE();
+
+
+            if (respone != null)
+            {
+                return View("Product", respone);
+            }
+            return null;
+        }
+        //Contact
         [HttpGet]
         public IActionResult Contact()
         {
