@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Site Metas -->
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>Tropiko</title>
+
+    <!-- slider stylesheet -->
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" href="~/css/bootstrap.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- fonts style -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="~/css/style.css" rel="stylesheet" />
+    <!-- responsive style -->
+    <link href="~/css/responsive.css" rel="stylesheet" />
+</head>
+<body>
+
+    <header class="header_section">
+        @Html.Partial("_Header.cshtml")
+    </header>
+
+    @RenderBody()
+
+    @Html.Partial("_Footer.cshtml")
+    <script type="text/javascript" src="~/js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="~/js/bootstrap.js"></script>
+
+    <script>
+        // This example adds a marker to indicate the position of Bondi Beach in Sydney,
+        // Australia.
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 11,
+                center: {
+                    lat: 40.645037,
+                    lng: -73.880224
+                },
+            });
+
+            var image = 'images/maps-and-flags.png';
+            var beachMarker = new google.maps.Marker({
+                position: {
+                    lat: 40.645037,
+                    lng: -73.880224
+                },
+                map: map,
+                icon: image
+            });
+        }</script>
+    <!-- google map js -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap&libraries=&v=weekly"></script>
+    <!-- end google map js -->
+</body>
+</html>
