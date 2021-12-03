@@ -34,6 +34,7 @@ namespace ProjectWeb2
             services.AddSingleton<IApiService, ApiService>();
             services.AddSingleton<ISqlHelper, SqlHelper>();
             services.AddSingleton<IContactLogic, ContactLogic>();
+            services.AddSingleton<IProductLogic, ProductLogic>();
             services.Configure<GetConnectString>(Configuration.GetSection(GetConnectString.Connection));
         }
 
