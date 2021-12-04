@@ -1,0 +1,171 @@
+﻿@model ProjectWeb2.Models.IndexModel
+@{ ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var ne = Model.ProductNE;
+    var gq = Model.ProductGQ;
+}
+<div class="hero_area">
+    @Html.Partial("SessionSlide.cshtml")
+</div>
+<!-- end service section -->
+<section class="fruit_section">
+    <div class="container">
+        <h2 class="custom_heading">NƯỚC ÉP</h2>
+        <p class="custom_heading-text">
+            Những loại nước ép ưa chuộng tại shop
+        </p>
+        <div class="row layout_padding2-top layout_padding-bottom">
+            <div class="slider" id="slider">
+                <div class="slide" id="slide">
+                    @foreach (var item in ne)
+                        {
+                    <img class="item" src="@Html.DisplayFor(m => item.ImgSource)">}
+                </div>
+
+                <button class="ctrl-btn pro-prev ">Prev</button>
+                <button class="ctrl-btn pro-next ">Next</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- end fruits section -->
+<!-- end service section -->
+<section class="fruit_section">
+    <div class="container">
+        <h2 class="custom_heading">GIỎ QUÀ</h2>
+        <p class="custom_heading-text">
+            Những mẫu giỏ quà tại shop
+        </p>
+        <div class="row layout_padding2-top layout_padding-bottom">
+            <div class="slider" id="slidergq">
+                <div class="slide" id="slidegq">
+                    @foreach (var item in gq)
+                        {
+                    <img class="item" src="@Html.DisplayFor(m => item.ImgSource)">}
+                </div>
+
+                <button class="ctrl-btn prevgq">Prev</button>
+                <button class="ctrl-btn nextgq">Next</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- end fruits section -->
+
+<script type="text/javascript">"use strict";
+    productScrollgq();
+    productScroll();
+    function productScroll() {
+        let slider = document.getElementById("slider");
+        let next = document.getElementsByClassName("pro-next");
+        let prev = document.getElementsByClassName("pro-prev");
+        let slide = document.getElementById("slide");
+        let item = document.getElementById("slide");
+
+        for (let i = 0; i < next.length; i++) {
+            //refer elements by class name
+
+            let position = 0; //slider postion
+
+            prev[i].addEventListener("click", function () {
+                //click previos button
+                if (position > 0) {
+                    //avoid slide left beyond the first item
+                    position -= 1;
+                    translateX(position); //translate items
+                }
+            });
+
+            next[i].addEventListener("click", function () {
+                if (position >= 0 && position < hiddenItems()) {
+                    //avoid slide right beyond the last item
+                    position += 1;
+                    translateX(position); //translate items
+                }
+            });
+        }
+
+        function hiddenItems() {
+            //get hidden items
+            let items = getCount(item, false);
+            let visibleItems = slider.offsetWidth / 230;
+            return items - Math.ceil(visibleItems);
+        }
+    }
+
+    function translateX(position) {
+        //translate items
+        slide.style.left = position * -230 + "px";
+    }
+
+    function getCount(parent, getChildrensChildren) {
+        //count no of items
+        let relevantChildren = 0;
+        let children = parent.childNodes.length;
+        for (let i = 0; i < children; i++) {
+            if (parent.childNodes[i].nodeType != 3) {
+                if (getChildrensChildren)
+                    relevantChildren += getCount(parent.childNodes[i], true);
+                relevantChildren++;
+            }
+        }
+        return relevantChildren;
+    }
+    function productScrollgq() {
+        let slidergq = document.getElementById("slidergq");
+        let nextgq = document.getElementsByClassName("nextgq");
+        let prevgq = document.getElementsByClassName("prevgq");
+        let slidegq = document.getElementById("slidegq");
+        let item = document.getElementById("slidegq");
+
+        for (let i = 0; i < nextgq.length; i++) {
+            //refer elements by class name
+
+            let position = 0; //slider postion
+
+            prevgq[i].addEventListener("click", function () {
+                //click previos button
+                if (position > 0) {
+                    //avoid slide left beyond the first item
+                    position -= 1;
+                    translateX2(position); //translate items
+                }
+            });
+
+            nextgq[i].addEventListener("click", function () {
+                if (position >= 0 && position < hiddenItems()) {
+                    //avoid slide right beyond the last item
+                    position += 1;
+                    translateX2(position); //translate items
+                }
+            });
+        }
+
+        function hiddenItems() {
+            //get hidden items
+            let items = getCount2(item, false);
+            let visibleItems = slidergq.offsetWidth / 230;
+            return items - Math.ceil(visibleItems);
+        }
+    }
+
+    function translateX2(position) {
+        //translate items
+        slidegq.style.left = position * -230 + "px";
+    }
+
+    function getCount2(parent, getChildrensChildren) {
+        //count no of items
+        let relevantChildren = 0;
+        let children = parent.childNodes.length;
+        for (let i = 0; i < children; i++) {
+            if (parent.childNodes[i].nodeType != 3) {
+                if (getChildrensChildren)
+                    relevantChildren += getCount(parent.childNodes[i], true);
+                relevantChildren++;
+            }
+        }
+        return relevantChildren;
+    }</script>
