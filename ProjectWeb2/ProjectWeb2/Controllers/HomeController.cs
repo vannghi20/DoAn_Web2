@@ -62,6 +62,16 @@ namespace ProjectWeb2.Controllers
             }
             return null;
         }
+        //ProductDetail
+        public async Task<IActionResult> Detail(string id)
+        {
+            var response = await _foodItemLogic.GetFoodById(id);
+            if (response != null)
+            {
+                return View("ProductDetail", response);
+            }
+            return null;
+        }
         //Dich vu
         public IActionResult DichVu()
         {
