@@ -21,7 +21,12 @@ namespace ProjectWeb2.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            IndexModel model = new IndexModel();
+            var respone = await _foodItemLogic.GetFoodNE();
+            var gq = await _foodItemLogic.GetFoodGQ();
+            model.ProductGQ = gq;
+            model.ProductNE = respone;
+            return View("Index", model);
         }
         public async Task<IActionResult> Product()
         {
