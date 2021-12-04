@@ -1,4 +1,4 @@
-body {
+pbody {
   font-family: 'Poppins', sans-serif;
   color: #000000;
   background-color: #ffffff;
@@ -1376,11 +1376,13 @@ a:focus {
 .product__details__pic__slider img {
     cursor: pointer;
 }
+
 .product__details__pic__item img {
     min-width: 100%;
     width: 100%;
     height: 100%;
 }
+
 .product__details__pic__slider.owl-carousel .owl-item img {
     width: auto;
 }
