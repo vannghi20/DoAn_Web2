@@ -19,7 +19,7 @@ namespace ProjectWeb2.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             IndexModel model = new IndexModel();
             var respone = await _foodItemLogic.GetFoodNE();
