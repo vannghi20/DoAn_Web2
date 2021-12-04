@@ -10,5 +10,6 @@ namespace ProjectWeb2.Interfaces
         Task<bool> CreateNewCart(CartItem cart);
         Task<List<CartItem>> GetAllCart();
         Task<bool> RemoveCart(int id);
+        Task<bool> CreatNewOder(ListOder oder);
     }
 }
