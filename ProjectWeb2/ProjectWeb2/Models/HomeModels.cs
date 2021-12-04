@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 
 namespace ProjectWeb2.Models
 {
-    public class HomeModel
+    public class HomeModels
     {
+        public List<FoodItem> foodItem;
     }
 }

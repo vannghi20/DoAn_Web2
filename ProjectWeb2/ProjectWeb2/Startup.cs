@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ProjectWeb2.BussinessLogic;
 using ProjectWeb2.Common.Config;
 using ProjectWeb2.Interfaces;
 using ProjectWeb2.Service;
@@ -32,6 +33,8 @@ namespace ProjectWeb2
             services.Configure<GetConnectApi>(Configuration.GetSection(GetConnectApi.ConnectApi));
             services.AddSingleton<IApiService, ApiService>();
             services.AddSingleton<ISqlHelper, SqlHelper>();
+            services.AddSingleton<IContactLogic, ContactLogic>();
+            services.AddSingleton<IProductLogic, ProductLogic>();
             services.Configure<GetConnectString>(Configuration.GetSection(GetConnectString.Connection));
         }
 
