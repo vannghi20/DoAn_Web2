@@ -1,0 +1,54 @@
+﻿@model ProjectWeb2.Models.ContacUs
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- contact section -->
+<section class="contact_section layout_padding">
+    <div class="container">
+        <h2 class="font-weight-bold">
+            Contact Us
+        </h2>
+        <div class="row">
+            <div class="col-md-8 mr-auto">
+                <form method="post" asp-action="SendMess" asp-controller="Home">
+                    <div class="contact_form-container">
+                        <div>
+                            <div>
+                                <input asp-for="name" type="text" placeholder="Name">
+                            </div>
+                            <div>
+                                <input asp-for="sdt" type="text" placeholder="Phone Number">
+                            </div>
+                            <div>
+                                <input asp-for="gmail" type="email" placeholder="Email">
+                            </div>
+
+                            <div class="mt-5">
+                                <input asp-for="message" type="text" placeholder="Message">
+                            </div>
+                            <div class="mt-5">
+                                <button type="submit">
+                                    send
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </form>
+            </div>
+        </div>
+        @if (ViewBag.ConfirmMsg != null) {
+            <div class="alert alert-success">@ViewBag.ConfirmMsg</div>
+        }
+    </div>
+</section>
+<!-- end contact section -->
+<!-- map section -->
+<section class="map_section">
+    <div id="map" class="h-100 w-100 ">
+    </div>
+</section>
+
+<!-- end map section -->
