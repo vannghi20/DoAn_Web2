@@ -1,0 +1,94 @@
+@model List<ProjectWeb2.Models.CartItem>
+    @{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    CartItem cart = new CartItem();
+
+    double total = 0;
+    foreach (var item in Model)
+    {
+        total += item.Price * item.Quantyti;
+    }
+    }
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section set-bg" data-setbg="~/img/bainer.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2>Tropiko Shop</h2>
+                        <div class="breadcrumb__option">
+                            <a asp-controller="Home" asp-action="Index">Home</a>
+                            <span>Shop</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+    <!-- Shoping Cart Section Begin -->
+    <section class="shoping-cart spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="shoping__cart__table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th class="shoping__product">Products</th>
+                                    <th>Price</th>
+                                    <th>Quantity</th>
+                                    <th>Total</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            @foreach (var item in Model)
+                        {
+
+                            <tbody>
+                                <tr>
+                                    <td class="shoping__cart__item">
+                                        <img src="img/cart/cart-1.jpg" alt="">
+                                        <h5>@Html.DisplayFor(model=>item.ProductTile)</h5>
+                                    </td>
+                                    <td class="shoping__cart__price">
+                                        @Html.DisplayFor(model => item.Price)
+                                    </td>
+                                    <td class="shoping__cart__quantity">
+                                        <div class="quantity">
+                                            <div class="pro-qty">
+                                                <input type="text" value="@item.Quantyti">
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="shoping__cart__total" id="total">
+                                        @(item.Price*item.Quantyti)
+                                    </td>
+                                    <td class="shoping__cart__item__close">
+                                        <a href="@Url.Action("RemoveCart", "Cart", new { id = item.ProductId})" onclick="return confirm('Are you sure you want to Delete?')" class="fa fa-times-circle" id="removecart"></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        }
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="shoping__cart__btns">
+                        <a asp-controller="Home" asp-action="Product" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="shoping__checkout" id="total">
+                        <ul>
+
+                            <li>Total <span>@total</span></li>
+                        </ul>
+                        <a asp-controller="Cart" asp-action="Checkout" class="primary-btn">PROCEED TO CHECKOUT</a>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <!-- Shoping Cart Section End -->

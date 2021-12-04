@@ -37,5 +37,29 @@ namespace ProjectWeb2.BussinessLogic
 
             }
         }
+        public async Task<bool> CreatNewOder(ListOder oder
+            )
+        {
+            string query = "insert into ListOder (CustomerName,CustomerPhone,Product,Address,Total,Ngaydat) values (@CustomerName,@CustomerPhone,@Product,@Address,@Total,@Ngaydat);";
+            var parameters = new IDataParameter[]
+            {
+                new SqlParameter("@CustomerName",oder.name),
+                new SqlParameter("@CustomerPhone",oder.sdt),
+                new SqlParameter("@Product",oder.cart),
+                new SqlParameter("@Address",oder.address),
+                new SqlParameter("@Total",oder.thanhtien),
+                new SqlParameter("@Ngaydat",DateTime.Today)
+           };
+
+            if (await _sqlHelper.ExcuteDate(query, parameters) > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+
+            }
+        }
     }
 }

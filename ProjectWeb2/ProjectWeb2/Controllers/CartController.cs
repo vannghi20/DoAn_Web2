@@ -55,7 +55,22 @@ namespace ProjectWeb2.Controllers
                 return View("Checkout", response);
             }
             return null;
+            
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> TaoDonHang(ListOder oder)
+        {
+            if (ModelState.IsValid)
+            {
+                var response = await _cartItemLogic.CreatNewOder(oder);
+                if (response)
+                {
+                    ViewBag.ConfirmMsg = "Đơn hàng đã được ghi nhận";
+                }
+            }
 
+            return View("Home");
         }
     }
 }
